@@ -1,33 +1,43 @@
 const db = require('../config/db')
 class OrderController {
-	async createOrder(req, res) {
-		const {
-			user_id,
-			total_price,
-			STATUS,
-			order_id,
-			product_id,
-			quantity,
-			price,
-		} = req.body
-		const newOrder = await db.query(
-			'INSERT INTO orders (user_id, total_price, STATUS) values ($1, $2, $3) RETURNING *',
-			[user_id, total_price, STATUS]
-		)
-		const orderItems = await db.query(
-			'INSERT INTO order_items (order_id, product_id, quantity, price) values ($1, $2, $3,$4) RETURNING *',
-			[order_id, product_id, quantity, price]
-		)
-		res.json(newOrder.rows[0])
-		res.json(orderItems.rows[0])
-		console.log('OrderItems created:', orderItems.rows[0])
-		console.log('Order created:', newOrder.rows[0])
-	}
-	async allOrders(req, res) {
-		const id = req.params.id
-		const orders = await db.query('SELECT * FROM orders where user_id=$1', [id])
-		res.json(orders.rows)
-		console.log('Orders:', orders.rows)
+	async createOrder(params) {
+		const client = await db.getConnection()
+		try {
+			await client.beginTransaction()
+			const totalPrice = params.items.reduce(
+				(sum, item) => sum + item.price * item.quantity,
+				0
+			)
+			await client.query(
+				'INSERT INTO orders (user_id, total_price,status) VALUES (?, ?,pending)',
+				[params.user_id, totalPrice, params.status]
+			)
+			const [orderIdResult] = await client.query(
+				'SELECT LAST_INSERT_ID() AS order_id'
+			)
+			const orderId = orderIdResult[0].order_id
+			// 2️⃣ Додаємо товари у order_items
+			const items = params.items
+			const values = items.map(() => '(?, ?, ?, ?)').join(', ')
+			const query = `INSERT INTO order_items (order_id, product_id, quantity, price) VALUES ${values}`
+			const queryParams = items.flatMap(item => [
+				orderId,
+				item.product_id,
+				item.quantity,
+				item.price,
+			])
+
+			await client.query(query, queryParams)
+
+			await client.commit() // Завершуємо транзакцію
+
+			return { message: 'Order created', order_id: orderId }
+		} catch (err) {
+			await client.rollback()
+			throw err
+		} finally {
+			client.release()
+		}
 	}
 }
 module.exports = new OrderController()

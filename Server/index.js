@@ -1,16 +1,14 @@
 const express = require('express')
 const { JSONRPCServer } = require('json-rpc-2.0')
-const userController = require('./controllers/user.controller')
-
+const { user } = require('./methods/user.method')
+const { order } = require('./methods/order.method')
+const { payment } = require('./methods/payment.method')
 const server = new JSONRPCServer()
 const app = express()
 app.use(express.json())
-
-// Додаємо метод createUser
-server.addMethod('createUser', async params => {
-	return await userController.createUser(params)
-})
-
+server.addMethod('createUser', user.createUser)
+server.addMethod('createOrder', order.createOrder)
+server.addMethod('createPayment', payment.createPayment)
 // Обробка RPC-запитів
 app.post('/rpc', async (req, res) => {
 	const jsonRPCResponse = await server.receive(req.body)
