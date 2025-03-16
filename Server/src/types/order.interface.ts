@@ -6,6 +6,10 @@ interface Item {
 
 export interface OrderParams {
 	user_id: number
-	items: Item[]
+	total_price: number
+	status: string
+}
+export interface updateOrderStatus {
+	order_id: number
 	status: string
 }

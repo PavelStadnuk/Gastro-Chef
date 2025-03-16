@@ -19,5 +19,10 @@ const payments = {
             return yield payments_controller_1.default.createPayments(params);
         });
     },
+    getPayment(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield payments_controller_1.default.getPayment(params);
+        });
+    },
 };
 exports.default = payments;

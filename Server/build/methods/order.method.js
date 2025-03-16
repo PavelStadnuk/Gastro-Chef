@@ -19,5 +19,20 @@ const Order = {
             return yield order_controller_1.default.createOrder(params);
         });
     },
+    getOrdersByUserId(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield order_controller_1.default.getOrdersByUserId(params);
+        });
+    },
+    updateOrderStatus(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield order_controller_1.default.updateOrderStatus(params);
+        });
+    },
+    deleteOrder(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield order_controller_1.default.deleteOrder(params);
+        });
+    },
 };
 exports.default = Order;

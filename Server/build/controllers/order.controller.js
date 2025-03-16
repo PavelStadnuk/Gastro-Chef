@@ -13,36 +13,66 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = __importDefault(require("../config/db"));
+const order_schema_1 = require("../schemas/order.schema");
 class OrderController {
     createOrder(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            const client = yield db_1.default.getConnection();
             try {
-                yield client.beginTransaction();
-                const totalPrice = params.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-                yield client.query('INSERT INTO orders (user_id, total_price,status) VALUES (?, ?,pending)', [params.user_id, totalPrice, params.status]);
-                const [orderIdResult] = yield client.query('SELECT LAST_INSERT_ID() AS order_id');
-                const orderId = orderIdResult[0].order_id;
-                // 2️⃣ Додаємо товари у order_items
-                const items = params.items;
-                const values = items.map(() => '(?, ?, ?, ?)').join(', ');
-                const query = `INSERT INTO order_items (order_id, product_id, quantity, price) VALUES ${values}`;
-                const queryParams = items.flatMap(item => [
-                    orderId,
-                    item.product_id,
-                    item.quantity,
-                    item.price,
-                ]);
-                yield client.query(query, queryParams);
-                yield client.commit(); // Завершуємо транзакцію
-                return { message: 'Order created', order_id: orderId };
+                if (!(0, order_schema_1.validateCreateOrder)(params)) {
+                    return {
+                        code: -32602,
+                        message: 'invalid params',
+                        errors: order_schema_1.validateCreateOrder.errors,
+                    };
+                }
+                const { user_id, total_price, status } = params;
+                const [result] = yield db_1.default.execute('INSERT INTO orders (user_id, total_price,STATUS) VALUES (?, ?, ?)', [user_id, total_price, status]);
             }
-            catch (err) {
-                yield client.rollback();
-                throw err;
+            catch (error) {
+                console.error('❌ Error creating user:', error);
+                throw new Error('Database error');
             }
-            finally {
-                client.release();
+        });
+    }
+    getOrdersByUserId(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const [orders] = yield db_1.default.query('SELECT * FROM orders WHERE user_id = ?', [params.user_id]);
+                return orders;
+            }
+            catch (error) {
+                console.error('❌ Error getting orders:', error);
+                throw new Error('Database error');
+            }
+        });
+    }
+    updateOrderStatus(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { order_id, status } = params;
+            try {
+                if (!(0, order_schema_1.validateUpdateOrderStatus)(params)) {
+                    return {
+                        code: -32602,
+                        message: 'invalid params',
+                        errors: order_schema_1.validateCreateOrder.errors,
+                    };
+                }
+                const [result] = yield db_1.default.execute('UPDATE orders SET STATUS = ? WHERE id = ?', [status, order_id]);
+            }
+            catch (error) {
+                console.error('❌ Error updating order:', error);
+                throw new Error('Database error');
+            }
+        });
+    }
+    deleteOrder(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const [result] = yield db_1.default.execute('DELETE FROM orders WHERE id = ?', [params.order_id]);
+            }
+            catch (error) {
+                console.error('❌ Error deleting order:', error);
+                throw new Error('Database error');
             }
         });
     }

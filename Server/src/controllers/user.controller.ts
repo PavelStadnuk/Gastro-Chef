@@ -14,7 +14,6 @@ class UserController {
 			}
 			const { name, email, password, phone, address } = params
 
-			// Додаємо користувача в базу
 			const [result] = await db.execute<ResultSetHeader>(
 				'INSERT INTO users (name, email, password, phone, address) VALUES (?, ?, ?, ?, ?)',
 				[name, email, password, phone, address]
@@ -35,7 +34,6 @@ class UserController {
 			}
 			const { name, email, password, phone, address, id } = params
 
-			// Додаємо користувача в базу
 			const [result] = await db.execute<ResultSetHeader>(
 				'UPDATE users SET name = ?, email = ?, password = ?, phone = ?, address = ? WHERE id = ?',
 
@@ -57,7 +55,6 @@ class UserController {
 			}
 			const { id } = params
 
-			// Додаємо користувача в базу
 			const [result] = await db.execute<ResultSetHeader>(
 				'SELECT * FROM users WHERE id = ?',
 				[id]
@@ -78,7 +75,6 @@ class UserController {
 			}
 			const { id } = params
 
-			// Додаємо користувача в базу
 			const [result] = await db.execute<ResultSetHeader>(
 				'DELETE  FROM users WHERE id = ?',
 				[id]

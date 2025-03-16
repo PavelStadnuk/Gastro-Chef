@@ -12,27 +12,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_controller_1 = __importDefault(require("../controllers/user.controller"));
-const user = {
-    createUser(params) {
+const product_controller_1 = __importDefault(require("../controllers/product.controller"));
+const product = {
+    createProduct(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield user_controller_1.default.createUser(params);
+            return yield product_controller_1.default.createProduct(params);
         });
     },
-    updateUser(params) {
+    updateProduct(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield user_controller_1.default.updateUser(params);
+            return yield product_controller_1.default.updateProduct(params);
         });
     },
-    getUser(params) {
+    getProduct(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield user_controller_1.default.getUser(params);
+            return yield product_controller_1.default.getProductById(params);
         });
     },
-    deleteUser(params) {
+    deleteProduct(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield user_controller_1.default.deleteUser(params);
+            return yield product_controller_1.default.deleteProduct(params);
+        });
+    },
+    getProducts() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield product_controller_1.default.getProducts();
         });
     },
 };
-exports.default = user;
+exports.default = product;

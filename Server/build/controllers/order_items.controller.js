@@ -13,83 +13,81 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = __importDefault(require("../config/db"));
-const user_schema_1 = require("../schemas/user.schema");
-class UserController {
-    createUser(params) {
+const order_items_schema_1 = require("../schemas/order_items.schema");
+class orderItemsController {
+    createOrderItem(params) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                if (!(0, user_schema_1.validateCreateUser)(params)) {
+                if (!(0, order_items_schema_1.validateCreateOrderItems)(params)) {
                     return {
                         code: -32602,
                         message: 'invalid params',
-                        errors: user_schema_1.validateCreateUser.errors,
+                        errors: order_items_schema_1.validateCreateOrderItems.errors,
                     };
                 }
-                const { name, email, password, phone, address } = params;
-                const [result] = yield db_1.default.execute('INSERT INTO users (name, email, password, phone, address) VALUES (?, ?, ?, ?, ?)', [name, email, password, phone, address]);
+                const { orderId, productId, quantity, price } = params;
+                const [result] = yield db_1.default.execute('INSERT INTO orders_item (order_id, products_id, quantity, price) VALUES (?, ?, ?, ?)', [orderId, productId, quantity, price]);
             }
             catch (error) {
-                console.error('❌ Error creating user:', error);
+                console.error('❌ Error creating order item:', error);
                 throw new Error('Database error');
             }
         });
     }
-    updateUser(params) {
+    updateOrderItem(params) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                if (!(0, user_schema_1.validateCreateUser)(params)) {
+                if (!(0, order_items_schema_1.validateUpdateOrderItems)(params)) {
                     return {
                         code: -32602,
                         message: 'invalid params',
-                        errors: user_schema_1.validateCreateUser.errors,
+                        errors: order_items_schema_1.validateCreateOrderItems.errors,
                     };
                 }
-                const { name, email, password, phone, address, id } = params;
-                const [result] = yield db_1.default.execute('UPDATE users SET name = ?, email = ?, password = ?, phone = ?, address = ? WHERE id = ?', [name, email, password, phone, address, id]);
+                const { orderId, productId, quantity, price } = params;
+                const [result] = yield db_1.default.execute('UPDATE order_items SET order_id = ?, product_id = ?, quantity = ?, price = ? WHERE id = ?', [orderId, productId, quantity, price]);
             }
             catch (error) {
-                console.error('❌ Error  update user:', error);
+                console.error('❌ Error updating order item:', error);
                 throw new Error('Database error');
             }
         });
     }
-    getUser(params) {
+    getOrderItem(params) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                if (!(0, user_schema_1.validateCreateUser)(params)) {
-                    return {
-                        code: -32602,
-                        message: 'invalid params',
-                        errors: user_schema_1.validateCreateUser.errors,
-                    };
-                }
                 const { id } = params;
-                const [result] = yield db_1.default.execute('SELECT * FROM users WHERE id = ?', [id]);
+                const [result] = yield db_1.default.execute('SELECT * FROM order_items WHERE id = ?', [id]);
             }
             catch (error) {
-                console.error('❌ Error getting user:', error);
+                console.error('❌ Error getting order item:', error);
                 throw new Error('Database error');
             }
         });
     }
-    deleteUser(params) {
+    deleteOrderItem(params) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                if (!(0, user_schema_1.validateCreateUser)(params)) {
-                    return {
-                        code: -32602,
-                        message: 'invalid params',
-                        errors: user_schema_1.validateCreateUser.errors,
-                    };
-                }
                 const { id } = params;
-                const [result] = yield db_1.default.execute('DELETE  FROM users WHERE id = ?', [id]);
+                const [result] = yield db_1.default.execute('DELETE FROM order_items WHERE id = ?', [id]);
             }
             catch (error) {
-                console.error('❌ Error delete user:', error);
+                console.error('❌ Error deleting order item:', error);
+                throw new Error('Database error');
+            }
+        });
+    }
+    getOrderItems(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { orderId } = params;
+                const [result] = yield db_1.default.execute('SELECT * FROM order_items WHERE order_id = ?', [orderId]);
+            }
+            catch (error) {
+                console.error('❌ Error getting order items:', error);
                 throw new Error('Database error');
             }
         });
     }
 }
-exports.default = new UserController();
+exports.default = new orderItemsController();
