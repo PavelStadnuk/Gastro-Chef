@@ -27,6 +27,15 @@ const updateUserSchema = {
 	required: ['email', 'password', 'name', 'phone', 'address', 'id'],
 	additionalProperties: false,
 }
-
+const loginUserSchema = {
+	type: 'object',
+	properties: {
+		email: { type: 'string', format: 'email' },
+		password: { type: 'string', minLength: 8 },
+	},
+	required: ['email', 'password'],
+	additionalProperties: false,
+}
+export const validateLoginUser = ajv.compile(loginUserSchema)
 export const validateCreateUser = ajv.compile(createUserSchema)
 export const validateUpdateUser = ajv.compile(updateUserSchema)

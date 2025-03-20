@@ -13,6 +13,9 @@ const user = {
 	async deleteUser(params: { id: number }) {
 		return await userController.deleteUser(params)
 	},
+	async login(params: { email: string; password: string }) {
+		return await userController.login(params)
+	},
 }
 
 export default user

@@ -1,6 +1,6 @@
 import { ResultSetHeader } from 'mysql2'
 import db from '../config/db'
-import { validateCreateUser } from '../schemas/user.schema'
+import { validateCreateUser, validateLoginUser } from '../schemas/user.schema'
 import { CreateUserParams, UpdateUserParams } from '../types/user.interface'
 class UserController {
 	async createUser(params: CreateUserParams) {
@@ -81,6 +81,26 @@ class UserController {
 			)
 		} catch (error) {
 			console.error('❌ Error delete user:', error)
+			throw new Error('Database error')
+		}
+	}
+	async login(params: { email: string; password: string }) {
+		try {
+			if (!validateLoginUser(params)) {
+				return {
+					code: -32602,
+					message: 'invalid params',
+					errors: validateCreateUser.errors,
+				}
+			}
+			const { email, password } = params
+
+			const [result] = await db.execute<ResultSetHeader>(
+				'SELECT * FROM users WHERE email = ? AND password = ?',
+				[email, password]
+			)
+		} catch (error) {
+			console.error('❌ Error login:', error)
 			throw new Error('Database error')
 		}
 	}
