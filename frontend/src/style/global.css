@@ -1,0 +1,43 @@
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+h1,
+h2,
+h3 {
+    font-family: 'Comfortaa', cursive;
+}
+
+button {
+    all: unset;
+    border: none;
+    font-family: 'Comfortaa', cursive;
+    cursor: pointer;
+    background-color: #64d370;
+    color: #f5faff;
+    border-radius: 50px;
+    padding: 14px;
+}
+input {
+    /* all: unset;   */
+    padding: 20px;
+    border: 1px solid #F5FAFF;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #dee6ee;
+    border-radius: 50px;
+
+}

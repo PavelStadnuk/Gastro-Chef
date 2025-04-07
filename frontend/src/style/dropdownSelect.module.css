@@ -1,0 +1,16 @@
+.wrapperDropdownSelect{
+width: 42.5em;
+}
+.dropdownButton{
+    background-color:#f5faff;
+    border-radius: 50px;
+    padding: 30px;
+    margin-top: 30px;
+}
+.dropdown{
+    width: 100%;
+}
+.dropDownDescription{
+    padding: 30px;
+    
+}

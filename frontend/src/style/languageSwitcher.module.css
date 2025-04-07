@@ -1,0 +1,20 @@
+.languages {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: -60px;
+    margin-left: -20px;
+    gap: 1em;
+}
+
+.languagesItem {
+    padding: 15px;
+    border-radius: 50px;
+    background-color: #f5faff;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.active {
+    background-color: #00ba2d;
+    color: #f5faff;
+}

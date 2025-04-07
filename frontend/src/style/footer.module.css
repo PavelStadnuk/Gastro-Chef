@@ -1,0 +1,23 @@
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1.4em;
+	background-color: #f5faff;
+	padding: 1em;
+}
+.links {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8em;
+}
+.сontactSection {
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	gap: 0.8em;
+}
+.contacts {
+	display: flex;
+	gap: 0.5em;
+}
