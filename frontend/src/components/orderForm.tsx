@@ -12,7 +12,7 @@ const OrderForm = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors }
     } = useForm<OrderFormInputs>();
 
     const onSubmit: SubmitHandler<OrderFormInputs> = data => {
@@ -46,19 +46,21 @@ const OrderForm = () => {
                             required: 'Name is required',
                             minLength: {
                                 value: 2,
-                                message: "Ім'я має містити мінімум 2 символи",
+                                message: "Ім'я має містити мінімум 2 символи"
                             },
                             pattern: {
                                 value: /^[A-Za-zА-Яа-яЁёІіЇїЄє'’ -]+$/,
-                                message: "Некоректне ім'я",
-                            },
+                                message: "Некоректне ім'я"
+                            }
                         })}
                         className={style.input}
                     />
                     {errors.name && <p>{errors.name.message}</p>}
-                    <span className={`${style.marker} ${
-                        errors.name ? style.errorSpan : ''
-                    }`}></span>
+                    <span
+                        className={`${style.marker} ${
+                            errors.name ? style.errorSpan : ''
+                        }`}
+                    ></span>
                 </div>
             </div>
 
@@ -72,27 +74,29 @@ const OrderForm = () => {
                 </label>
                 <div className={style.wrapperInput}>
                     <input
-                        type='tel'
+                        type="tel"
                         {...register('phone', {
                             required: 'Phone is required',
                             pattern: {
                                 value: /^\+?[\d\s\-\(\)]+$/,
-                                message: 'Некоректний номер телефону',
-                            },
+                                message: 'Некоректний номер телефону'
+                            }
                         })}
                         className={style.input}
                     />
                     {errors.phone && <p>{errors.phone.message}</p>}
-                    <span className={`${style.marker} ${
-                        errors.phone ? style.errorSpan : ''
-                    }`}></span>
+                    <span
+                        className={`${style.marker} ${
+                            errors.phone ? style.errorSpan : ''
+                        }`}
+                    ></span>
                 </div>
             </div>
 
             <div>
                 <label className={style.customCheckboxWrapper}>
                     <input
-                        type='checkbox'
+                        type="checkbox"
                         {...register('testDay')}
                         className={style.customCheckbox}
                     />
@@ -103,9 +107,9 @@ const OrderForm = () => {
             <div>
                 <label className={style.customCheckboxWrapper}>
                     <input
-                        type='checkbox'
+                        type="checkbox"
                         {...register('termsAccepted', {
-                            required: 'Вы должны согласиться с условиями',
+                            required: 'Вы должны согласиться с условиями'
                         })}
                         className={style.customCheckbox}
                     />
@@ -115,9 +119,9 @@ const OrderForm = () => {
             </div>
 
             <div className={style.orderButton}>
-                <button type='submit'>Онлайн заказ</button>
+                <button type="submit">Онлайн заказ</button>
                 <h1>Или</h1>
-                <button type='button' onClick={handlePhoneOrder}>
+                <button type="button" onClick={handlePhoneOrder}>
                     Заказ по телефону
                 </button>
             </div>

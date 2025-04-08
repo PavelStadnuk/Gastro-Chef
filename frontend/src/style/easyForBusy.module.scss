@@ -1,0 +1,21 @@
+.wrapperEasyForBusy{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .easyForBusy{
+        margin: 0 auto;
+        width: 40%;
+        
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .imageEasyForBusy{
+        width: 50%;
+        
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

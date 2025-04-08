@@ -1,0 +1,10 @@
+.wrapperHistoryGastroChef{
+    display: flex;
+    align-items: center;
+    .historyGastroChef{
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+}

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import logo from '../assets/logo.png';
 import style from '../style/header.module.css';
 import LanguageSwitcher from './languageSwitcher';
-import { useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl';
 const Header = () => {
     // const categorys = [
     //     'Програми питания',
@@ -12,30 +12,31 @@ const Header = () => {
     //     'О нас',
     //     'Блог',
     // ];
-    const t = useTranslations('Home')
+    const t = useTranslations('Home');
     const categorys = [
-        t('Nutrition programs'),
-        t('Business lunches'),
-        t('Gastro Shop'),
-        t('About Us'),
-        t('Blog'),  
+        { name: t('Nutrition programs'), link: '/nutrition-programs' },
+        { name: t('Business lunches'), link: '/business-lunches' },
+        { name: t('Gastro Shop'), link: '/gastro-shop' },
+        { name: t('About Us'), link: 'aboutus' },
+        { name: t('Blog'), link: '/blog' }
     ];
+
     return (
         <header className={style.wrapper}>
             <div className={style.logo}>
-                <Image alt='logo' src={logo} />
+                <Image alt="logo" src={logo} />
             </div>
             <div>
                 <div className={style.links}>
                     {categorys.map(category => {
                         return (
-                            <Link href='#' key={category}>
-                                {category}
+                            <Link href={category.link} key={category.link}>
+                                {category.name}
                             </Link>
                         );
                     })}
                 </div>
-                <LanguageSwitcher/>
+                <LanguageSwitcher />
             </div>
 
             <div className={style.telephone}>

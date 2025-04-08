@@ -1,16 +1,16 @@
-"use client";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import style from "../style/languageSwitcher.module.css";
+'use client';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import style from '../style/languageSwitcher.module.css';
 
 const LanguageSwitcher = () => {
     const router = useRouter();
-    const [activeLanguage, setActiveLanguage] = useState<string>("");
+    const [activeLanguage, setActiveLanguage] = useState<string>('');
 
     useEffect(() => {
         // Отримуємо поточну мову з URL
-        const pathSegments = window.location.pathname.split("/");
-        setActiveLanguage(pathSegments[1] || "ru"); // За замовчуванням "ru"
+        const pathSegments = window.location.pathname.split('/');
+        setActiveLanguage(pathSegments[1] || 'ru'); // За замовчуванням "ru"
     }, []);
 
     const changeLanguage = (language: string) => {
@@ -20,14 +20,16 @@ const LanguageSwitcher = () => {
         }
     };
 
-    const LanguagesMas = ["uk", "en", "ru"];
+    const LanguagesMas = ['uk', 'en', 'ru'];
 
     return (
         <div className={style.languages}>
             {LanguagesMas.map((language, index) => (
                 <span
                     key={index}
-                    className={`${style.languagesItem} ${language === activeLanguage ? style.active : ""}`}
+                    className={`${style.languagesItem} ${
+                        language === activeLanguage ? style.active : ''
+                    }`}
                     onClick={() => changeLanguage(language)}
                 >
                     {language}
