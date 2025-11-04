@@ -1,9 +1,13 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../assets/logo.png';
 import style from '../style/header.module.css';
 import LanguageSwitcher from './languageSwitcher';
 import { useTranslations } from 'next-intl';
+import cart from '../assets/cart.svg';
+import { useState } from 'react';
+import Cart from './cart';
 const Header = () => {
     // const categorys = [
     //     'Програми питания',
@@ -12,14 +16,17 @@ const Header = () => {
     //     'О нас',
     //     'Блог',
     // ];
-    const t = useTranslations('Home');
+
     const categorys = [
-        { name: t('Nutrition programs'), link: '/nutrition-programs' },
-        { name: t('Business lunches'), link: '/business-lunches' },
-        { name: t('Gastro Shop'), link: '/gastro-shop' },
-        { name: t('About Us'), link: 'aboutus' },
-        { name: t('Blog'), link: '/blog' }
+        { name: 'Nutrition programs', link: '/' },
+        { name: 'Products', link: '/categories' },
+        { name: 'Gastro Shop', link: '/' },
+        { name: 'About Us', link: '/aboutus' },
+        { name: 'Blog', link: '/news/page/1' }
     ];
+
+    const [isCartOpen, setIsCartOpen] = useState(false);
+
 
     return (
         <header className={style.wrapper}>
@@ -28,20 +35,34 @@ const Header = () => {
             </div>
             <div>
                 <div className={style.links}>
-                    {categorys.map(category => {
+                    {categorys.map((category,index) => {
                         return (
-                            <Link href={category.link} key={category.link}>
+                            <Link href={category.link} key={index}>
                                 {category.name}
                             </Link>
                         );
                     })}
                 </div>
-                <LanguageSwitcher />
+                {/* <LanguageSwitcher /> */}
             </div>
 
             <div className={style.telephone}>
                 <p>+380 (685) 33-35-29</p>
             </div>
+            <div
+                className={style.cart}
+                onClick={() => setIsCartOpen(!isCartOpen)}
+            >
+                <Image
+                    alt="cart"
+                    src={cart}
+                    width={42}
+                    height={42}
+                    className={style.cartImage}
+                />
+                {/* <span className={style.cartCount}>0</span> */}
+            </div>
+            {isCartOpen && <Cart close={()=>setIsCartOpen(false)} />}
         </header>
     );
 };

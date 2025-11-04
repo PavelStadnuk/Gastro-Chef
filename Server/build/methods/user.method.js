@@ -34,5 +34,10 @@ const user = {
             return yield user_controller_1.default.deleteUser(params);
         });
     },
+    login(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield user_controller_1.default.login(params);
+        });
+    },
 };
 exports.default = user;

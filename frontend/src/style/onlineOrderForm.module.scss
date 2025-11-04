@@ -1,0 +1,33 @@
+.form{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    .formContainer{
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        input{width: 100%;}
+        .addressDetails{display: flex; gap: 10px; input{width: calc(25% - 10px);}}
+    }
+    
+    textarea, select{width: 100%;}
+    button{
+        text-align: center;
+    }
+}
+.checkboxLabel{
+    color: #F5FAFF;
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 10px;
+    input{
+        flex: 1;
+    }
+    p{
+        flex: 1;
+    }
+}

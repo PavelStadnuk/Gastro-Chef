@@ -23,6 +23,7 @@ const server = new json_rpc_2_0_1.JSONRPCServer();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 server.addMethod('createUser', user_method_1.default.createUser);
+server.addMethod('login', user_method_1.default.login);
 server.addMethod('updateUser', user_method_1.default.updateUser);
 server.addMethod('getUser', user_method_1.default.getUser);
 server.addMethod('deleteUser', user_method_1.default.deleteUser);

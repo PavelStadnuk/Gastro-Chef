@@ -91,5 +91,24 @@ class UserController {
             }
         });
     }
+    login(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!(0, user_schema_1.validateLoginUser)(params)) {
+                    return {
+                        code: -32602,
+                        message: 'invalid params',
+                        errors: user_schema_1.validateCreateUser.errors,
+                    };
+                }
+                const { email, password } = params;
+                const [result] = yield db_1.default.execute('SELECT * FROM users WHERE email = ? AND password = ?', [email, password]);
+            }
+            catch (error) {
+                console.error('❌ Error login:', error);
+                throw new Error('Database error');
+            }
+        });
+    }
 }
 exports.default = new UserController();

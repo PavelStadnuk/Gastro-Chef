@@ -1,0 +1,88 @@
+.cartWrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    gap: 25px;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    .cart {
+        display: flex;        
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+    }
+    .wrapperOrderPhone {
+        width: 53%;
+    }
+    .orderTelephone {
+        color: #dee6ee;
+        text-decoration: underline;
+    }
+    .cartProducts {
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        .cartProduct {
+        
+            padding: 15px;
+            background-color: #f5faff;
+            border-radius: 30px;
+            h4{
+                text-align: center;
+            }
+            .cartProductInfo {
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .cartProductPrice {
+                    color: #64d370;
+                }
+                .cartProductCount {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    span {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 20px;
+                        width: 30px;
+                        height: 30px;
+                        color: black;
+                        background-color: #dee6ee;
+                        border-radius: 50px;
+                    }
+                }
+            }
+        }
+    }
+    .orderWrapper {
+        width: 53%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+        .orderInfo {
+            padding: 14px;
+            border: 1px solid #dee6ee;
+            border-radius: 50px;
+            color: #dee6ee;
+        }
+    }
+}
+.cartActive{
+    display: flex;
+}

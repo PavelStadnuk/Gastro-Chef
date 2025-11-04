@@ -27,7 +27,7 @@ const OrderAndFAQ = () => {
 
     return (
         <div className={style.orderAndFAQWrapper}>
-            <div className={style.orderWrapper}>
+            {/* <div className={style.orderWrapper}>
                 <div className={style.order}>
                     <h1>Оформить заказ</h1>
                     <h3>
@@ -37,9 +37,9 @@ const OrderAndFAQ = () => {
                     </h3>
                 </div>
                 <OrderForm />
-            </div>
+            </div> */}
             <div>
-                <h1>Часто задаваемые вопросы</h1>
+                <h1 className={style.FAQ}>Часто задаваемые вопросы</h1>
                 <DropdownSelect options={options} />
             </div>
         </div>

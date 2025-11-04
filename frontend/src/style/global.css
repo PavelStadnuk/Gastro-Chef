@@ -31,7 +31,7 @@ button {
     border-radius: 50px;
     padding: 14px;
 }
-input {
+input, textarea, select {
     /* all: unset;   */
     padding: 20px;
     border: 1px solid #F5FAFF;

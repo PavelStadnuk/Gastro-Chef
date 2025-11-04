@@ -13,6 +13,7 @@ const EasyForBusy = () => {
                 еды правильного питания. </p>
                 <p>Желание хоть как-то изменить ситуацию и помочь людям не давало мне покоя и я решил открыть доставку 
                 еды правильного питания. </p>
+                <div><h1>С уважением, Кобылинский Кирилл.</h1></div>
             </div>
             <div className={style.imageEasyForBusy}>
                 <Image src={easy} alt='History GastroChef' />
