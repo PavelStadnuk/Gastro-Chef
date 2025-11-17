@@ -6,16 +6,17 @@ import newsImage from '@/assets/newsFish1.png'
 import { ArticleInterface } from '../../../../../inerface/news.interface.js';
 const itemsPerPage = 9;
 
-export default async function NewsPage({ params }: { params: { page: string } }) {
-  const page = parseInt(params.page);
-  const data = await listArticles(page, itemsPerPage); // виклик бекенду
+export default async function NewsPage({ params }: { params: Promise<{ page: string }> }) {
+const { page: pageParam } = await params;
+  const page = parseInt(pageParam);
+  const data = await listArticles(page, itemsPerPage);
   const newsItems = data.articles; 
   const totalPages = Math.ceil(data.total / itemsPerPage);
 
   if (isNaN(page) || page < 1 || page > totalPages) {
     return <div>Сторінка не знайдена</div>;
   }
-  console.log('NewsPage data:', data);
+  
 
   return (
     <div className={style.newsPage}>

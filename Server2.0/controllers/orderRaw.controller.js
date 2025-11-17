@@ -8,12 +8,12 @@ class OrderRawController {
                 return { error: 'Invalid input', details: validateCreateOrderRaw.errors };
             }
             const [result] = await db.execute(
-                `INSERT INTO orderRaw (orderId, productId, providerId,dayToDeliver,timeToDeliver,status,weight,price,count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                `INSERT INTO orderraw (orderId, productId, providerId,dayToDeliver,timeToDeliver,status,weight,price,count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                 [orderId, productId, providerId,dayToDeliver,timeToDeliver,status,weight,price ,count]
             );
             return { orderRawId: result.insertId };  
         } catch (error) {
-            console.error('❌ Error creating order raw:', error);
+            console.error('Error creating order raw:', error);
             throw new Error('Database error');
         }
     }
@@ -22,12 +22,12 @@ class OrderRawController {
         try {
             const { orderRawId } = params;  
             const [result] = await db.execute(
-                'SELECT * FROM orderRaw WHERE id = ?',
+                'SELECT * FROM orderraw WHERE id = ?',
                 [orderRawId]
             ); 
             return result[0] || null
         } catch (error) {
-            console.error('❌ Error getting order raw:', error);
+            console.error('Error getting order raw:', error);
             throw new Error('Database error');
         }
     }
@@ -36,13 +36,13 @@ class OrderRawController {
         try {
             const { orderId } = params;  
             const [result] = await db.execute(
-                'SELECT * FROM orderRaw WHERE orderId = ?',
+                'SELECT * FROM orderraw WHERE orderId = ?',
                 [orderId]
             ); 
             return result;
         }
         catch (error) {
-            console.error('❌ Error getting order raws by order ID:', error);
+            console.error('Error getting order raws by order ID:', error);
             throw new Error('Database error');
         }
     }
@@ -51,12 +51,12 @@ class OrderRawController {
 
             const { orderRawId } = params;
             const [result] = await db.execute(
-                'DELETE FROM orderRaw WHERE id = ?',        
+                'DELETE FROM orderraw WHERE id = ?',        
                 [orderRawId]
             );
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error deleting order raw:', error);
+            console.error('Error deleting order raw:', error);
             throw new Error('Database error');
         }   
     }
@@ -67,12 +67,12 @@ class OrderRawController {
             }
             const { orderRawId, status } = params;  
             const [result] = await db.execute(
-                'UPDATE orderRaw SET status = ? WHERE id = ?',
+                'UPDATE orderraw SET status = ? WHERE id = ?',
                 [status, orderRawId]
             );
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error updating order raw:', error);
+            console.error('Error updating order raw:', error);
             throw new Error('Database error');
         }   
     }

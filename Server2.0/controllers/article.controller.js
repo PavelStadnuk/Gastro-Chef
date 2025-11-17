@@ -1,21 +1,24 @@
 import db from '../config/db.js';
-import { validateCreateArticle, validateUpdateArticle } from '../schemas/arcticle.schema.js';
+import {
+    validateCreateArticle,
+    validateUpdateArticle,
+} from '../schemas/arcticle.schema.js';
 class ArticleController {
     async createArticle(params) {
         try {
             if (!validateCreateArticle(params)) {
-                return{
+                return {
                     code: -32602,
                     error: 'Invalid parameters',
-                    details: validateCreateArticle.errors
+                    details: validateCreateArticle.errors,
                 };
-                }
-            const { title, content, dateAdd,slug } = params;
+            }
+            const { title, content, dateAdd, slug } = params;
             const [result] = await db.execute(
                 'INSERT INTO article (title, content, dateAdd, slug) VALUES (?, ?, ?, ?)',
-                [title, content, dateAdd ,slug]
+                [title, content, dateAdd, slug]
             );
-            return { id: result.insertId, title, content, dateAdd,slug };
+            return { id: result.insertId, title, content, dateAdd, slug };
         } catch (error) {
             throw new Error('Error creating article: ' + error.message);
         }
@@ -38,12 +41,12 @@ class ArticleController {
     async updateArticle(params) {
         try {
             if (!validateUpdateArticle(params)) {
-                return{
+                return {
                     code: -32602,
                     error: 'Invalid parameters',
-                    details: validateUpdateArticle.errors
+                    details: validateUpdateArticle.errors,
                 };
-                }
+            }
             const { id, title, content } = params;
             const [result] = await db.execute(
                 'UPDATE article SET title = ?, content = ? WHERE id = ?',
@@ -72,29 +75,37 @@ class ArticleController {
             throw new Error('Error deleting article: ' + error.message);
         }
     }
-async listArticles(params) {
-    try {
-        const { page = 1, itemsPerPage = 9 } = params || {};
-        const offset = (page - 1) * itemsPerPage;
+    async listArticles(params) {
+        try {
+            const data = params || {};
+            const page = Number(data.page) || 1;
+            const itemsPerPage = Number(data.itemsPerPage) || 9;
+            const offset = (page - 1) * itemsPerPage;
 
-        const [rows] = await db.execute(
-            'SELECT * FROM article ORDER BY dateAdd DESC LIMIT ? OFFSET ?',
-            [itemsPerPage, offset]
-        );
+            console.log('Listing articles -', { page, itemsPerPage, offset });
+            console.log(typeof itemsPerPage, typeof offset);
 
-        const articles = rows.map(article => ({
-            ...article,
-            dateAdd: article.dateAdd.toISOString().slice(0, 10)
-        }));
-        // Загальна кількість для пагінації
-        const [countResult] = await db.execute('SELECT COUNT(*) as total FROM article');
-        const total = countResult[0].total;
+            const [rows] = await db.query(
+                'SELECT * FROM article ORDER BY dateAdd DESC LIMIT ? OFFSET ?',
+                [itemsPerPage, offset]
+            );
 
-        return { articles, total };
-    } catch (error) {
-        throw new Error('Error listing articles: ' + error.message);
+            const articles = rows.map(article => ({
+                ...article,
+                dateAdd: article.dateAdd.toISOString().slice(0, 10),
+            }));
+
+            const [countResult] = await db.execute(
+                'SELECT COUNT(*) as total FROM article'
+            );
+            const total = countResult[0].total;
+
+            return { articles, total };
+        } catch (error) {
+            throw new Error('Error listing articles: ' + error.message);
+        }
     }
-}
+
     async getArticleBySlug(params) {
         try {
             const { slug } = params;

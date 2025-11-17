@@ -3,7 +3,7 @@ import redis from '../config/redis.js';
 
 class CartController {
 
-    // ✅ Додавання товару
+    
     async addToCart(params) {
         try {
             const { clientId, productId, quantity, price, weight, name } = params;
@@ -25,7 +25,7 @@ class CartController {
         }
     }
 
-    // ✅ Отримання кошика
+    
     async getCart(params) {
         try {
             const { clientId } = params;
@@ -38,7 +38,7 @@ class CartController {
         }
     }
 
-    // ✅ Очистка кошика
+
     async clearCart(params) {
         try {
             const { clientId } = params;
@@ -50,7 +50,7 @@ class CartController {
         }
     }
 
-    // ✅ Оновлення кількості
+    
     async updateQuantity(params) {
         try {
             const { clientId, productId, quantity } = params;
@@ -76,7 +76,7 @@ class CartController {
         }
     }
 
-    // ✅ Видалення товару
+    
     async removeFromCart(params) {
         try {
             const { clientId, productId } = params;
@@ -93,7 +93,7 @@ class CartController {
         }
     }
 
-    // ✅ Оформлення замовлення
+    
     async checkout(params) {
         try {
             const { clientId, paymentMethod, howConnectWithYou, whereHearAboutUs } = params;

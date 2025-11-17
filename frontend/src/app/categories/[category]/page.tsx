@@ -5,27 +5,27 @@ import style from '@/style/productsPage.module.scss';
 import mainImage from '@/assets/candyCategoryMain.png';
 import ProductCard from '../../../components/productCard'; 
 import { Product } from '../../../../inerface/product.interface.js';
-type Props = {
-  params: {
-    category: string;
-  };
-};
-export default async function ProductsPage({ params }:Props) {
-  let category;
+
+export default async function ProductsPage(
+  { params }: { params: Promise<{ category: string }> }
+) {
+  const { category } = await params;
+  let categoryData;
   try {
-    category = await getCategoryBySlug(params.category);
+    categoryData = await getCategoryBySlug(category);
   } catch (err) {
     console.error('Error fetching category by slug:', err);
     return notFound();
   }
+  
 
   let products = [];
   try {
-    products = await getProductsByCategory(category.categoryId);
+    products = await getProductsByCategory(categoryData.categoryId);
   } catch (err) {
     console.error('Error fetching products by category:', err);
   }
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL_Image;
 
 
 
@@ -34,14 +34,14 @@ export default async function ProductsPage({ params }:Props) {
       <div
         className={style.aboutCategory}
         style={{
-         backgroundImage: `url(${category.mainImage ? `${API_URL}${category.mainImage}` : mainImage.src})`,
+         backgroundImage: `url(${categoryData.mainImage ? `${API_URL}${categoryData.mainImage}` : mainImage.src})`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
         }}
       >
-        <h1>{category.name}</h1>
-        <p>{category.description}</p>
+        <h1>{categoryData.name}</h1>
+        <p>{categoryData.description}</p>
       </div>
 
       <div className={style.products}>

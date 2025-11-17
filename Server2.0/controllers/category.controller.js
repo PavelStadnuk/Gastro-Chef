@@ -22,7 +22,7 @@ class CategoryController {
             );
             return { categoryId: result.insertId };
         } catch (error) {
-            console.error('❌ Error creating category:', error);
+            console.error('Error creating category:', error);
             throw new Error('Database error');
         }
     }
@@ -39,7 +39,7 @@ class CategoryController {
             }
             return rows[0];
         } catch (error) {
-            console.error('❌ Error getting category:', error);
+            console.error('Error getting category:', error);
             throw new Error('Database error');
         }
     }
@@ -60,7 +60,7 @@ class CategoryController {
             );
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error updating category:', error);
+            console.error(' Error updating category:', error);
             throw new Error('Database error');
         }
     }
@@ -74,7 +74,7 @@ class CategoryController {
             );
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error deleting category:', error);
+            console.error('Error deleting category:', error);
             throw new Error('Database error');
         }
     }
@@ -84,7 +84,7 @@ class CategoryController {
             const [rows] = await db.execute('SELECT * FROM category');
             return rows;
         } catch (error) {
-            console.error('❌ Error listing categories:', error);
+            console.error('Error listing categories:', error);
             throw new Error('Database error');
         }
     }
@@ -100,7 +100,7 @@ class CategoryController {
             }
             return rows[0];
         } catch (error) {
-            console.error('❌ Error getting category by slug:', error);
+            console.error('Error getting category by slug:', error);
             throw new Error('Database error');
         }
     }
@@ -113,7 +113,7 @@ class CategoryController {
             );
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error updating category images:', error);
+            console.error('Error updating category images:', error);
             throw new Error('Database error');
         }
 

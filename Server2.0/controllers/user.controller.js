@@ -3,7 +3,7 @@ import { validateUpdateUser, validateCreateUser } from '../schemas/user.schema.j
 
 
 class UserController {
-    // Створення користувача
+    
     async createUser(params) {
         try {
             if (!validateCreateUser(params)) {
@@ -23,12 +23,12 @@ class UserController {
 
             return { userId: result.insertId };
         } catch (error) {
-            console.error('❌ Error creating user:', error);
+            console.error('Error creating user:', error);
             throw new Error('Database error');
         }
     }
 
-    // Оновлення користувача
+
     async updateUser(params) {
         try {
             if (!validateUpdateUser(params)) {
@@ -48,12 +48,12 @@ class UserController {
 
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error updating user:', error);
+            console.error('Error updating user:', error);
             throw new Error('Database error');
         }
     }
 
-    // Отримання користувача за ID
+    
     async getUser(params) {
         try {
             const { id } = params;
@@ -65,12 +65,12 @@ class UserController {
 
             return rows[0] || null;
         } catch (error) {
-            console.error('❌ Error getting user:', error);
+            console.error('Error getting user:', error);
             throw new Error('Database error');
         }
     }
 
-    // Видалення користувача
+    
     async deleteUser(params) {
         try {
             const { id } = params;
@@ -82,7 +82,7 @@ class UserController {
 
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error deleting user:', error);
+            console.error('Error deleting user:', error);
             throw new Error('Database error');
         }
     }

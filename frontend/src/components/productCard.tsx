@@ -24,8 +24,7 @@ export default function ProductCard({ product }:ProductCardProps) {
                 weight: product.weight ?? 0
             });
             alert('Товар додано в кошик!');
-            // console.log(`Added to cart: clientId=${clientId}, productId=${product.productId},productNam${product.name} quantity=${count} data=${JSON.stringify(product)}`);
-            console.log('🧩 Client ID:', clientId);
+        
             
         } catch (err) {
             console.error(err);

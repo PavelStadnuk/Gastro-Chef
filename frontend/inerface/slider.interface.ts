@@ -2,7 +2,6 @@ import { StaticImageData } from 'next/image'
 export interface ImageCarouselProps {
 	masPhoto: StaticImageData[]
 	settings: {
-		// Типізація налаштувань каруселі
 		dots: boolean
 		infinite: boolean
 		slidesToShow: number

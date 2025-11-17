@@ -4,7 +4,7 @@ import mas2 from '@/assets/mas2.png';
 import mas3 from '@/assets/mas3.png';
 import mas4 from '@/assets/mas4.png';
 import mas5 from '@/assets/mas5.png';
-import { ImageCarouselProps } from '@/types/slider.interface';
+import { ImageCarouselProps } from '../../inerface/slider.interface';
 import { StaticImageData } from 'next/image';
 import style from '../style/mainSlider.module.css';
 import { Sliker } from './slider';

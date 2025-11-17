@@ -5,13 +5,13 @@ import { createUploadRoute } from './routeHelper.js';
 
 const router = express.Router();
 
-// middleware для створення продукту
+
 const uploadProduct = createUploadMiddleware('products', 'image');
 
-// створення нового продукту
+
 createUploadRoute(router, '/create', uploadProduct, product.createProduct);
 
-// middleware для оновлення фото існуючого продукту
+
 const uploadProductImage = createUploadMiddleware('products', 'image');
 
 router.post('/update-image', uploadProductImage, async (req, res) => {
@@ -35,7 +35,7 @@ router.post('/update-image', uploadProductImage, async (req, res) => {
     const result = await product.updateProductImage({ productId, imagePath });
     res.json({ success: true, data: result });
   } catch (err) {
-    console.error('❌ Error updating product image:', err);
+    console.error('Error updating product image:', err);
     res.status(500).json({ success: false, message: 'Помилка при оновленні фото' });
   }
 });

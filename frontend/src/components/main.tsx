@@ -1,13 +1,13 @@
 'use client';
 import Image, { StaticImageData } from 'next/image';
 import { useState } from 'react';
-import bottle from '../assets/bottle.png';
-import carrot from '../assets/carrot.png';
-import fish from '../assets/fish.png';
-import meat from '../assets/meat.png';
-import table from '../assets/table.png';
-import kkal from '../assets/Ккал.png';
-import style from '../style/main.module.css';
+import bottle from '@/assets/bottle.png';
+import carrot from '@/assets/carrot.png';
+import fish from '@/assets/fish.png';
+import meat from '@/assets/meat.png';
+import table from '@/assets/table.png';
+import kkal from '@/assets/Ккал.png';
+import style from '@/style/main.module.css';
 type MainInformation = {
     text: string;
     image: StaticImageData;

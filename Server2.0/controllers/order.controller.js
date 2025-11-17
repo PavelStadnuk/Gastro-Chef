@@ -21,7 +21,7 @@ class OrderController {
 
             return { orderId: result.insertId };
         } catch (error) {
-            console.error('❌ Error creating order:', error);
+            console.error('Error creating order:', error);
             throw new Error('Database error');
         }
     }
@@ -34,7 +34,7 @@ class OrderController {
             ); 
             return result;
         } catch (error) {
-            console.error('❌ Error getting order:', error);
+            console.error('Error getting order:', error);
             throw new Error('Database error');
         }
     }
@@ -47,7 +47,7 @@ class OrderController {
             );
             return result;
         } catch (error) {
-            console.error('❌ Error getting orders:', error);
+            console.error('Error getting orders:', error);
             throw new Error('Database error');
         }
     }
@@ -60,7 +60,7 @@ class OrderController {
             );
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error deleting order:', error);
+            console.error('Error deleting order:', error);
             throw new Error('Database error');
         }  
     }

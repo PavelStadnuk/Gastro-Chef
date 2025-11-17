@@ -5,16 +5,16 @@ import { createUploadRoute } from './routeHelper.js';
 
 const router = express.Router();
 
-// middleware для категорій (два файли: mainImage і image)
+
 const uploadCategory = createMultipleUploadMiddleware('categories', [
   { name: 'mainImage', maxCount: 1 },
   { name: 'image', maxCount: 1 }
 ]);
 
-// 🟢 створення нової категорії
+
 createUploadRoute(router, '/create', uploadCategory, category.createCategory);
 
-// 🟦 оновлення фото існуючої категорії
+
 router.post('/update-images', uploadCategory, async (req, res) => {
   try {
     const { categoryId } = req.body;

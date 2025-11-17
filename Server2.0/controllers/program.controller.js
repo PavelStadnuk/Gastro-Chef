@@ -19,7 +19,7 @@ class ProgramController {
             );
             return { programId: result.insertId, name, description, price, type,calorieContent };
         } catch (error) {
-            console.error("❌ Error creating program:", error);
+            console.error("Error creating program:", error);
             throw new Error("Database error");
         }
     }
@@ -54,7 +54,7 @@ class ProgramController {
                 [programId]
             );
 
-            // Групування плану за днями
+            
             const groupedPlan = [];
             planRows.forEach(item => {
                 let day = groupedPlan.find(d => d.day === item.weekDay);
@@ -76,7 +76,7 @@ class ProgramController {
         }
     }
 
-    // Оновити програму
+    
     async updateProgram(params) {
         if (!validateUpdateProgram(params)) {
             return {
@@ -97,7 +97,7 @@ class ProgramController {
         }
     }
 
-    // Видалити програму
+    
     async deleteProgram(params) {
         const { programId } = params;
         try {

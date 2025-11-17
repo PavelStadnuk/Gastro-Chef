@@ -19,7 +19,7 @@ class ProviderController {
             );
             return { providerId: result.insertId };
         } catch (error) {
-            console.error('❌ Error creating provider:', error);
+            console.error('Error creating provider:', error);
             throw new Error('Database error');
         }
     }
@@ -32,7 +32,7 @@ class ProviderController {
             ); 
             return result;
         } catch (error) {
-            console.error('❌ Error getting provider:', error);
+            console.error('Error getting provider:', error);
             throw new Error('Database error');
         }  
     }
@@ -43,7 +43,7 @@ class ProviderController {
             );
             return result;
         } catch (error) {
-            console.error('❌ Error getting providers:', error);
+            console.error('Error getting providers:', error);
             throw new Error('Database error');
         }
     }
@@ -65,7 +65,7 @@ class ProviderController {
             );
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error updating provider:', error);
+            console.error('Error updating provider:', error);
             throw new Error('Database error');
         }   
     }
@@ -78,7 +78,7 @@ class ProviderController {
             );
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error deleting provider:', error);
+            console.error('Error deleting provider:', error);
             throw new Error('Database error');
         }  
     }

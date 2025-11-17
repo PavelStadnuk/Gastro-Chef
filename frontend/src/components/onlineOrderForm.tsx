@@ -3,10 +3,10 @@
 import { useForm } from 'react-hook-form';
 import style from '../style/onlineOrderForm.module.scss';
 import { createUser, updateUser, getUser } from '../../api/user.api.js';
-import { getCart, clearCart } from '../../api/cart.api.js';
-import { createOrder } from '../../api/order.api.js';
-import { createOrderRaw } from '../../api/orderRaw.api.js';
-import { getClientId } from '../../utils/clientId.utils';
+import { getCart, clearCart } from '@/../api/cart.api.js';
+import { createOrder } from '@/../api/order.api.js';
+import { createOrderRaw } from '@/../api/orderRaw.api.js';
+import { getClientId } from '@/../utils/clientId.utils';
 import { FormValuesInterface } from '../../inerface/onlineOrderForm.interface.js';
 
 
@@ -30,11 +30,11 @@ const OnlineOrderForm = () => {
                     data.entrance ? ', парадний ' + data.entrance : ''
                 }${data.intercom ? ', домофон ' + data.intercom : ''}`
             });
-            console.log('User created:', newUser);
+            
 
     
             const cart = await getCart(clientId); 
-            console.log('Cart fetched:', cart);
+            
             const products = Object.entries(cart.products || {}).map(
                 ([id, item]: any) => ({
                     productId: id,
@@ -60,7 +60,7 @@ const OnlineOrderForm = () => {
                 )
             };
             const order = await createOrder(orderData);
-            console.log('Order created:', order);
+            
 
             for (const p of products) {
                 const orderRawData = {
@@ -75,15 +75,15 @@ const OnlineOrderForm = () => {
                     count: p.quantity
                 };
 
-                console.log('Creating orderRaw with:', orderRawData);
+                
 
                 const result = await createOrderRaw(orderRawData);
-                console.log('Result from createOrderRaw:', result);
+                
             }
 
         
             await clearCart(clientId); 
-            console.log('Cart cleared');
+            
             alert('Замовлення успішно створено!');
         } catch (error) {
             console.error('Error submitting order:', error);

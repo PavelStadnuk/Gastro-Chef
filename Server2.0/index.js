@@ -18,12 +18,13 @@ const app = express();
 const server = new JSONRPCServer();
 
 app.use(express.json());
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true
-}));
+app.use(
+    cors({
+        origin: 'http://localhost:3000',
+        credentials: true,
+    })
+);
 
-// Додаємо методи
 server.addMethod('createUser', user.createUser);
 server.addMethod('updateUser', user.updateUser);
 server.addMethod('getUser', user.getUser);
@@ -69,7 +70,10 @@ server.addMethod('getProductsByCategory', product.getProductsByCategory);
 server.addMethod('updateProductImage', product.updateProductImage);
 server.addMethod('createProgramRow', programRow.createProgramRow);
 server.addMethod('getProgramRowById', programRow.getProgramRowById);
-server.addMethod('getProgramRowsByProgramId', programRow.getProgramRowsByProgramId);
+server.addMethod(
+    'getProgramRowsByProgramId',
+    programRow.getProgramRowsByProgramId
+);
 server.addMethod('deleteProgramRow', programRow.deleteProgramRow);
 server.addMethod('updateProgramRow', programRow.updateProgramRow);
 server.addMethod('createOrderRaw', orderRaw.createOrderRaw);
@@ -84,8 +88,6 @@ server.addMethod('checkout', cart.checkout.bind(cart));
 server.addMethod('updateQuantity', cart.updateQuantity.bind(cart));
 server.addMethod('removeFromCart', cart.removeFromCart.bind(cart));
 
-
-
 app.use('/product', productRoutes);
 app.use('/category', categoryRoutes);
 
@@ -98,6 +100,4 @@ app.post('/rpc', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3006;
-app.listen(PORT, () =>
-    console.log(`🚀 JSON-RPC Server running on port ${PORT}`)
-);
+app.listen(PORT, () => console.log(`JSON-RPC Server running on port ${PORT}`));

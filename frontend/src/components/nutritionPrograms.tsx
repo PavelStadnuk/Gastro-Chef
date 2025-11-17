@@ -36,7 +36,7 @@ const [currentDayIndex, setCurrentDayIndex] = useState<number>(0);
   async function fetchPrograms() {
     try {
       const progs = await getAllPrograms();
-      console.log('Programs:', progs);
+      
 
       const programsWithPlan = await Promise.all(
         progs.map(async (p:NutritionProgram) => {

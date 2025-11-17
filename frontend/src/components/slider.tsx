@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import { ImageCarouselProps } from '../types/slider.interface';
+import { ImageCarouselProps } from '@/../inerface/slider.interface';
 import style from '../style//slider.module.css';
 
 export const Sliker: React.FC<ImageCarouselProps> = ({

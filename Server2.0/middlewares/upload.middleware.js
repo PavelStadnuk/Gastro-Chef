@@ -2,7 +2,7 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 
-// Middleware для одного файлу
+
 export const createUploadMiddleware = (folderName, fieldName) => {
   const uploadDir = path.join('assets', folderName);
   if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
@@ -26,7 +26,7 @@ export const createUploadMiddleware = (folderName, fieldName) => {
   ];
 };
 
-// Middleware для кількох файлів
+
 export const createMultipleUploadMiddleware = (folderName, fields) => {
   const uploadDir = path.join('assets', folderName);
   if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });

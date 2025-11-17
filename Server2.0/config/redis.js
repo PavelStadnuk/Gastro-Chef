@@ -1,16 +1,16 @@
 import Redis from 'ioredis'
 
 const redis = new Redis({
-    host:'127.0.0.1',
+    host: process.env.REDIS_HOST || 'redis',
     port:6379,
 })
 
 redis.on('connect',()=>{
-    console.log('✅ Connected to Redis');
+    console.log('Connected to Redis');
 })
 
 redis.on('error',(err)=>{
-    console.error('❌ Redis connection error:',err);
+    console.error('Redis connection error:',err);
     process.exit(1);
 })
 

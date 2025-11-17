@@ -4,6 +4,7 @@ import style from '@/style/categories.module.scss';
 import { listCategories } from '../../../api/category.api.js';
 import mokImage from '@/assets/candyCategory.png'
 import { CategoryInterface } from '../../../inerface/category.interface.js';
+export const dynamic = 'force-dynamic';
 export default async function CategoriesPage() {
   const categories = await listCategories();
   const API_URL = process.env.NEXT_PUBLIC_API_URL;

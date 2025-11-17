@@ -12,8 +12,8 @@ const article = {
     async deleteArticle(params) {
         return await articleController.deleteArticle(params);
     },
-    async listArticles() {
-        return await articleController.listArticles();
+    async listArticles(params) {
+        return await articleController.listArticles(params);
     },
     async getArticleBySlug(params) {
         return await articleController.getArticleBySlug(params);

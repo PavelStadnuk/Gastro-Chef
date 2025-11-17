@@ -3,8 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../assets/logo.png';
 import style from '../style/header.module.css';
-import LanguageSwitcher from './languageSwitcher';
-import { useTranslations } from 'next-intl';
 import cart from '../assets/cart.svg';
 import { useState } from 'react';
 import Cart from './cart';

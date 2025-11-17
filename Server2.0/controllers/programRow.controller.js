@@ -18,7 +18,7 @@ class ProgramRowController {
 
             return { programRowId: result.insertId };
         } catch (error) {
-            console.error('❌ Error creating program row:', error);
+            console.error('Error creating program row:', error);
             throw new Error('Database error');
         }
     }
@@ -37,7 +37,7 @@ class ProgramRowController {
 
             return rows[0];
         } catch (error) {
-            console.error('❌ Error getting program row:', error);
+            console.error('Error getting program row:', error);
             throw new Error('Database error');
         }
     }
@@ -45,7 +45,7 @@ class ProgramRowController {
     async getProgramRowsByProgramId({ programId }) {
     const [rows] = await db.execute(
         `SELECT pr.weekDay, pr.mealName AS meal, pr.timeMeal, p.name, p.weight
-         FROM programRows pr
+         FROM programrows pr
          JOIN products p ON pr.productId = p.productId
          WHERE pr.programId = ?
          ORDER BY FIELD(pr.weekDay, 'ПН','ВТ','СР','ЧТ','ПТ','СБ','НД'), pr.timeMeal`,
@@ -83,7 +83,7 @@ class ProgramRowController {
 
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error deleting program row:', error);
+            console.error('Error deleting program row:', error);
             throw new Error('Database error');
         }
     }
@@ -105,7 +105,7 @@ class ProgramRowController {
 
             return { affectedRows: result.affectedRows };
         } catch (error) {
-            console.error('❌ Error updating program row:', error);
+            console.error('Error updating program row:', error);
             throw new Error('Database error');
         }
     }

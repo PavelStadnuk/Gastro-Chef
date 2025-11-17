@@ -1,7 +1,7 @@
 export const createUploadRoute = (router, path, uploadMiddleware, controllerMethod) => {
   router.post(path, uploadMiddleware, async (req, res) => {
     try {
-      // для категорій з кількома файлами
+      
       if (req.files) {
         if (req.files.mainImage) {
           req.body.mainImage = `/assets/categories/${req.files.mainImage[0].filename}`;
@@ -10,7 +10,7 @@ export const createUploadRoute = (router, path, uploadMiddleware, controllerMeth
           req.body.image = `/assets/categories/${req.files.image[0].filename}`;
         }
 
-        // для продуктів
+        
         if (req.file) {
           req.body.imagePath = `/assets/products/${req.file.filename}`;
         }
