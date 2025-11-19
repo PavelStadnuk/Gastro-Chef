@@ -1,11 +1,11 @@
 import api from './axios.js';
 
-// ➕ Створити orderRaw
+const uniqueId=Math.random().toString(36).slice(2);
 export const createOrderRaw = async (params) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'createOrderRaw',
       params,
     });
@@ -17,12 +17,12 @@ export const createOrderRaw = async (params) => {
   }
 };
 
-// 🔄 Оновити orderRaw
+
 export const updateOrderRaw = async (params) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'updateOrderRaw',
       params,
     });
@@ -34,12 +34,12 @@ export const updateOrderRaw = async (params) => {
   }
 };
 
-// 🗑 Видалити orderRaw
+
 export const deleteOrderRaw = async (orderRawId) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'deleteOrderRaw',
       params: { orderRawId },
     });
@@ -51,12 +51,12 @@ export const deleteOrderRaw = async (orderRawId) => {
   }
 };
 
-// 🛒 Отримати orderRaw за id
+
 export const getOrderRawById = async (orderRawId) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'getOrderRawById',
       params: { orderRawId },
     });
@@ -68,12 +68,12 @@ export const getOrderRawById = async (orderRawId) => {
   }
 };
 
-// 📝 Отримати всі orderRaws по orderId
+
 export const getOrderRawsByOrderId = async (orderId) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'getOrderRawsByOrderId',
       params: { orderId },
     });

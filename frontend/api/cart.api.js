@@ -1,10 +1,10 @@
 import api from './axios.js';
 
-// ➕ Додати в кошик
+const uniqueId=Math.random().toString(36).slice(2);
 export const addToCart = async (params) => {
   const response = await api.post('/rpc', {
     jsonrpc: '2.0',
-    id: Date.now(),
+    id: uniqueId,
     method: 'addToCart',
     params,
   });
@@ -12,11 +12,11 @@ export const addToCart = async (params) => {
   return response.data.result;
 };
 
-// 🛒 Отримати кошик
+
 export const getCart = async (clientId) => {
   const response = await api.post('/rpc', {
     jsonrpc: '2.0',
-    id: Date.now(),
+    id: uniqueId,
     method: 'getCart',
     params: { clientId },
   });
@@ -24,11 +24,11 @@ export const getCart = async (clientId) => {
   return response.data.result;
 };
 
-// 🔁 Оновити кількість
+
 export const updateQuantity = async (clientId, productId, quantity) => {
   const response = await api.post('/rpc', {
     jsonrpc: '2.0',
-    id: Date.now(),
+    id: uniqueId,
     method: 'updateQuantity',
     params: { clientId, productId, quantity },
   });
@@ -36,11 +36,11 @@ export const updateQuantity = async (clientId, productId, quantity) => {
   return response.data.result;
 };
 
-// ❌ Очистити кошик
+
 export const clearCart = async (clientId) => {
   const response = await api.post('/rpc', {
     jsonrpc: '2.0',
-    id: Date.now(),
+    id: uniqueId,
     method: 'clearCart',
     params: { clientId },
   });

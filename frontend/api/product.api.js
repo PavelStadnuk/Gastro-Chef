@@ -1,11 +1,11 @@
 import api from './axios.js'; 
 
-
+const uniqueId=Math.random().toString(36).slice(2);
 export const createProduct = async ({ name, price, categoryId, image, Composition, Proteins, Fats, Carbohydrates, Calories }) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'createProduct',
       params: { name, price, categoryId, image, Composition, Proteins, Fats, Carbohydrates, Calories },
     });
@@ -26,7 +26,7 @@ export const getProductById = async (productId) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'getProductById',
       params: { productId },
     });
@@ -44,7 +44,7 @@ export const listProducts = async (page = 1, itemsPerPage = 20) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'listProducts',
       params: { page, itemsPerPage },
     });
@@ -62,7 +62,7 @@ export const getProductsByCategory = async (categoryId) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'getProductsByCategory',
       params: { categoryId },
     });

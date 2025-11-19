@@ -1,11 +1,11 @@
 import api from './axios.js';
 
-// ➕ Створити замовлення
+const uniqueId=Math.random().toString(36).slice(2);
 export const createOrder = async (params) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'createOrder',
       params,
     });
@@ -17,12 +17,12 @@ export const createOrder = async (params) => {
   }
 };
 
-// 🛒 Отримати замовлення за ID
+
 export const getOrderById = async (orderId) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'getOrderById',
       params: { orderId },
     });
@@ -34,12 +34,12 @@ export const getOrderById = async (orderId) => {
   }
 };
 
-// 🧾 Отримати всі замовлення користувача
+
 export const getOrdersByClientId = async (clientId) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'getOrdersByClientId',
       params: { clientId },
     });
@@ -51,12 +51,12 @@ export const getOrdersByClientId = async (clientId) => {
   }
 };
 
-// ❌ Видалити замовлення
+
 export const deleteOrder = async (orderId) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'deleteOrder',
       params: { orderId },
     });

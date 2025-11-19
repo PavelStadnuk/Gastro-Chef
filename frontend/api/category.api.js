@@ -1,11 +1,12 @@
 import api from './axios.js';
 
-// Створити нову категорію
+const uniqueId=Math.random().toString(36).slice(2);
+
 export const createCategory = async ({ name, description, slug }) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'createCategory',
       params: { name, description, slug },
     });
@@ -21,12 +22,12 @@ export const createCategory = async ({ name, description, slug }) => {
   }
 };
 
-// Отримати категорію по ID
+
 export const getCategoryById = async (categoryId) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'getCategoryById',
       params: { categoryId },
     });
@@ -42,12 +43,12 @@ export const getCategoryById = async (categoryId) => {
   }
 };
 
-// Список категорій з пагінацією (опційно)
+
 export const listCategories = async () => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'listCategories',
       params: {},
     });
@@ -60,12 +61,12 @@ export const listCategories = async () => {
   }
 };
 
-// Отримати категорію по slug
+
 export const getCategoryBySlug = async (slug) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'getCategoryBySlug',
       params: { slug },
     });

@@ -1,9 +1,10 @@
 import api from './axios.js';
 
+const uniqueId=Math.random().toString(36).slice(2);
 export async function getAllPrograms() {
   const response = await api.post('/rpc', {
     jsonrpc: '2.0',
-    id: Date.now(),
+    id: uniqueId,
     method: 'getAllPrograms'
   });
   return response.data.result;
@@ -12,7 +13,7 @@ export async function getAllPrograms() {
 export async function getProgramRows(programId) {
   const response = await api.post('/rpc', {
     jsonrpc: '2.0',
-    id: Date.now(),
+    id: uniqueId,
     method: 'getProgramRowsByProgramId',
     params: { programId }
   });

@@ -50,8 +50,6 @@ services:
       MYSQL_DATABASE: project2_0
       REDIS_HOST: redis
       REDIS_PORT: 6379
-    volumes:
-      - ./Server2.0:/app
     command: ["npm", "run", "start"]
 
   frontend:

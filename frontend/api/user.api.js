@@ -1,11 +1,11 @@
 import api from './axios.js';
 
-// ➕ Створити користувача
+const uniqueId=Math.random().toString(36).slice(2);
 export const createUser = async (params) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'createUser',
       params,
     });
@@ -17,12 +17,12 @@ export const createUser = async (params) => {
   }
 };
 
-// ✏️ Оновити користувача
+
 export const updateUser = async (params) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'updateUser',
       params,
     });
@@ -34,12 +34,12 @@ export const updateUser = async (params) => {
   }
 };
 
-// 🧑‍💻 Отримати користувача за ID
+
 export const getUser = async (id) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'getUser',
       params: { id },
     });
@@ -51,12 +51,12 @@ export const getUser = async (id) => {
   }
 };
 
-// ❌ Видалити користувача
+
 export const deleteUser = async (id) => {
   try {
     const response = await api.post('/rpc', {
       jsonrpc: '2.0',
-      id: Date.now(),
+      id: uniqueId,
       method: 'deleteUser',
       params: { id },
     });
