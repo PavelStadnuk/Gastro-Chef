@@ -5,9 +5,9 @@
 .newsItems {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    align-items: center;
+    gap: 40px;
     margin-bottom: 30px;
     .newsItem {
         display: flex;
@@ -16,31 +16,29 @@
         align-items: center;
 
         gap: 5px;
-        width: 30%;
-        button{
+        button {
             background-color: white;
             color: #64d370;
             border: 1px solid #64d370;
         }
-        a{
+        a {
             padding: 15px;
             border-radius: 50px;
             background-color: white;
             color: #64d370;
             border: 1px solid #64d370;
         }
-        .mainImage{
-            width: 75%;
+        .mainImage {
+            min-width: 400px;
         }
     }
     h3 {
-        width: 68%;
     }
     .newsContent {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 68%;
+        width: 93%;
     }
 }
 .pagination {

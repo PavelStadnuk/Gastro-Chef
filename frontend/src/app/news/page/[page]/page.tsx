@@ -4,7 +4,7 @@ import Link from 'next/link';
 import style from '@/style/news.module.scss';
 import newsImage from '@/assets/newsFish1.png'
 import { ArticleInterface } from '../../../../../inerface/news.interface.js';
-const itemsPerPage = 9;
+const itemsPerPage = 8;
 
 export default async function NewsPage({ params }: { params: Promise<{ page: string }> }) {
 const { page: pageParam } = await params;

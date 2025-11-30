@@ -1,33 +1,71 @@
-.form{
+.form {
     display: flex;
     justify-content: center;
     gap: 20px;
-    .formContainer{
-        width: 40%;
+    .formContainer {
+        width: 50%;
         display: flex;
         flex-direction: column;
         gap: 20px;
-        input{width: 100%;}
-        .addressDetails{display: flex; gap: 10px; input{width: calc(25% - 10px);}}
+        input {
+            padding: 10px;
+            width: 100%;
+        }
+        .addressMain {
+            display: flex;
+            gap: 10px;
+            .streetInput {
+                flex: 0 0 50%;
+            }
+            .houseInput,
+            .floorInput {
+                flex: 1;
+            }
+        }
+        .addressDetails {
+            display: flex;
+            gap: 10px;
+            input {
+                width: calc(25% - 10px);
+            }
+        }
     }
-    
-    textarea, select{width: 100%;}
-    button{
+
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+    }
+    select {
+        option {
+            background-color: #1e1e1e;
+            color: #f5faff;
+        }
+    }
+    button {
         text-align: center;
+        transition: all 0.3s ease;
+        &:hover {
+            box-shadow: 0px 0px 30px 0px rgba(100, 211, 112, 0.49);
+            transform: translateY(-2px);
+        }
+        &:active {
+            box-shadow: 0px 0px 30px 0px rgba(100, 211, 112, 0.3);
+            transform: translateY(0px);
+        }
     }
 }
-.checkboxLabel{
-    color: #F5FAFF;
+.checkboxLabel {
+    color: #f5faff;
     display: flex;
     white-space: nowrap;
     align-items: center;
-    justify-content: space-between;
     padding: 20px;
     gap: 10px;
-    input{
-        flex: 1;
+    span {
+        color: #64d370;
     }
-    p{
-        flex: 1;
+    input {
+        max-width: 10px;
     }
 }

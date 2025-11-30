@@ -13,20 +13,22 @@ const Footer = () => {
         { name: 'Telegram', link: Telegram },
         { name: 'Viber', link: Viber }
     ];
-    const categorys = [
-        'Програми питания',
-        'Бизнес-ланчи',
-        'Gastro Shop',
-        'О нас',
-        'Блог'
-    ];
+
+        const categorys = [
+            { name: 'Nutrition programs', link: '/' },
+            { name: 'Products', link: '/categories' },
+            { name: 'Gastro Shop', link: '/' },
+            { name: 'About Us', link: '/aboutus' },
+            { name: 'Blog', link: '/news/page/1' }
+        ];
+
     return (
         <footer className={style.wrapper}>
             <div className={style.links}>
-                {categorys.map(category => {
+                {categorys.map((category,index)=> {
                     return (
-                        <Link href="#" key={category}>
-                            {category}
+                        <Link href={category.link} key={index}>
+                            {category.name}
                         </Link>
                     );
                 })}

@@ -10,7 +10,8 @@ export interface ImageCarouselProps {
 		speed: number
 		autoplaySpeed: number
 		cssEase: string
-        className:string
+        className?:string
+        centerMode?:boolean
 
 	}
 }

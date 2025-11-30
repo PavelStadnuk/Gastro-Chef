@@ -109,7 +109,16 @@ const Cart = ({ close }: { close: () => void }) => {
                                 </div>
                             ))
                         ) : (
-                            <p>Кошик порожній 🛒</p>
+                            <div className={style.emptyCart}>
+                                <div
+                                    className={style.closeCart}
+                                    onClick={close}
+                                >
+                                    ⛌
+                                </div>
+                                <h2>Ваш кошик порожній 🛒</h2>
+                                <p>Додайте товари, щоб почати покупки</p>
+                            </div>
                         )}
                     </div>
 

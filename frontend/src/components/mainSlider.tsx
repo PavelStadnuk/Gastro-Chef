@@ -15,11 +15,12 @@ const MainSlider = () => {
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
-        autoplay: false,
+        autoplay: true,
         speed: 5000,
-        autoplaySpeed: 0,
+        autoplaySpeed: 5000,
         cssEase: 'linear',
-        className: 'slider variable-width'
+        className: 'center',
+        centerMode: true,
     };
     return (
         <div className={style.wrapperMainSlider}>

@@ -109,9 +109,6 @@ const [currentDayIndex, setCurrentDayIndex] = useState<number>(0);
                             );
                         })}
                     </div>
-                    <div className={style.buttonShare}>
-                        <button>Заказать</button>
-                    </div>
         </div>
 
         <div>

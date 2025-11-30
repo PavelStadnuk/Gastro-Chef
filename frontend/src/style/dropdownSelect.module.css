@@ -2,6 +2,7 @@
 width: 42.5em;
 }
 .dropdownButton{
+    cursor: pointer;
     background-color:#f5faff;
     border-radius: 50px;
     padding: 30px;

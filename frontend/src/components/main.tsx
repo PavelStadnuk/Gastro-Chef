@@ -51,13 +51,6 @@ const Main = ({ mainInformation }: MainProps) => {
                 <div className={style.textMain}>
                     <h1>{mainInformation[currentIndex].text}</h1>
                     <p>8 бутылочек натуральных смузи и фрешей.</p>
-                    <div className={style.infoButton}>
-                        <button>Заказать</button>
-                        <div>
-                            <p>Пробный день всего:</p>
-                            <h2>427 грн</h2>
-                        </div>
-                    </div>
                 </div>
                 <div className={style.imageMain}>
                     <Image

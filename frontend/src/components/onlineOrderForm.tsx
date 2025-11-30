@@ -117,47 +117,48 @@ const OnlineOrderForm = () => {
                     />
                     {errors.email && <p>{errors.email.message}</p>}
                 </div>
+                <div className={style.addressMain}>
+                    <div className={style.streetInput}>
+                        <input
+                            placeholder="Вулиця"
+                            {...register('street', {
+                                required: 'Обовʼязкове поле'
+                            })}
+                            
+                        />
+                        {errors.street && <p>{errors.street.message}</p>}
+                    </div>
 
-                <div>
-                    <input
-                        placeholder="Вулиця"
-                        {...register('street', {
-                            required: 'Обовʼязкове поле'
-                        })}
-                    />
-                    {errors.street && <p>{errors.street.message}</p>}
+                    <div className={style.houseInput}>
+                        <input
+                            placeholder="Дім"
+                            {...register('house', {
+                                required: 'Обовʼязкове поле'
+                            })}
+                            
+                        />
+                        {errors.house && <p>{errors.house.message}</p>}
+                    </div>
+                    <div className={style.floorInput}><input placeholder="Поверх" {...register('floor')}  /></div>
                 </div>
 
-                <div>
-                    <input
-                        placeholder="Дім"
-                        {...register('house', { required: 'Обовʼязкове поле' })}
-                    />
-                    {errors.house && <p>{errors.house.message}</p>}
-                </div>
                 <div className={style.addressDetails}>
-                    <input placeholder="Поверх" {...register('floor')} />
+                    
                     <input placeholder="Квартира" {...register('apartment')} />
                     <input placeholder="Парадний" {...register('entrance')} />
                     <input placeholder="Домофон" {...register('intercom')} />
                 </div>
 
-                <div>
-                    <label className={style.checkboxLabel}>
-                        <p>Тест день</p>
-                        <input type="checkbox" {...register('testDay')} />
-                    </label>
-                </div>
 
                 <div>
                     <label className={style.checkboxLabel}>
-                        <p>Згоден з умовами</p>
+                        
                         <input
                             type="checkbox"
                             {...register('agree', {
                                 required: 'Необхідно погодитись з умовами'
                             })}
-                        />
+                        /> Згоден з <span>умовами співпраці</span>
                     </label>
                 </div>
                 <button type="submit">Надіслати</button>
@@ -202,13 +203,6 @@ const OnlineOrderForm = () => {
                         {...register('wishes')}
                         placeholder="Звідки дізналися про нас"
                     />
-                </div>
-
-                <div>
-                    <label className={style.checkboxLabel}>
-                        <p>Мені потрібні прибори</p>
-                        <input type="checkbox" {...register('needCutlery')} />
-                    </label>
                 </div>
             </div>
         </form>
