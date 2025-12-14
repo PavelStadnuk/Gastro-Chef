@@ -16,7 +16,7 @@ const Header = () => {
     // ];
 
     const categorys = [
-        { name: 'Nutrition programs', link: '/' },
+        // { name: 'Nutrition programs', link: '/' },
         { name: 'Products', link: '/categories' },
         { name: 'Gastro Shop', link: '/' },
         { name: 'About Us', link: '/aboutus' },

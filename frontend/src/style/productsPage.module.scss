@@ -1,4 +1,5 @@
 .aboutCategory{
+    margin-top: 20px;
     width: 100%;
     height: 460px;
     display: flex;
@@ -23,6 +24,10 @@
     flex-wrap: wrap;
     text-align: center;
     .product{
+        img{
+            width: 100%;
+            height: auto;
+        }
         .productDescription{
             padding: 0 30px;
             display: flex;
@@ -44,7 +49,6 @@
                     align-items: center;
                     gap: 15px;
                     span{
-                        cursor: pointer;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -56,6 +60,26 @@
                         border-radius: 50px;
                         
                     }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 768px) {
+    .aboutCategory{
+        height: auto;
+        padding: 40px 20px;
+        p{
+            width: 100%;
+        }
+    }
+    .products{
+        gap: 15px;
+        .product{
+            .productDescription{
+                padding: 0 15px;
+                .priceCount{
+                    gap: 15px;
                 }
             }
         }

@@ -36,8 +36,8 @@
         width: 100%;
         padding: 10px;
     }
-    select {
-        option {
+    select{
+        option{
             background-color: #1e1e1e;
             color: #f5faff;
         }
@@ -46,12 +46,12 @@
         text-align: center;
         transition: all 0.3s ease;
         &:hover {
-            box-shadow: 0px 0px 30px 0px rgba(100, 211, 112, 0.49);
-            transform: translateY(-2px);
+            box-shadow: 0px 0px 30px 0px rgba(100,211,112,0.49);
+            transform: translateY(-2px); 
         }
         &:active {
-            box-shadow: 0px 0px 30px 0px rgba(100, 211, 112, 0.3);
-            transform: translateY(0px);
+            box-shadow: 0px 0px 30px 0px rgba(100,211,112,0.3);
+            transform: translateY(0px); 
         }
     }
 }
@@ -67,5 +67,18 @@
     }
     input {
         max-width: 10px;
+    }
+}
+@media (max-width: 701px) {
+    .form {
+        flex-direction: column-reverse;
+        gap: 10px;
+        .formContainer {
+            width: 100%;
+            gap: 10px;
+            .addressDetails{
+                justify-content: center;
+            }
+        }
     }
 }

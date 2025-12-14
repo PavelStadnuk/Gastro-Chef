@@ -14,7 +14,7 @@ export default async function CategoriesPage() {
         <div key={category.slug} className={style.categoryItem}>
           <Image src={category?.image ? `${API_URL}${category.image}` : mokImage} alt={category.name} width={200} height={200} />
           <div className={style.categoryContent}>
-            <h1>{category.name}</h1>
+            <h3>{category.name}</h3>
             <Link href={`/categories/${category.slug}`}>Асортимент &gt;</Link>
           </div>
         </div>

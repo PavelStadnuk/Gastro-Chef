@@ -2,34 +2,37 @@
     margin: 0 auto;
     width: 80%;
     opacity: 0.6;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
     margin-top: 100px;
 }
 .ourPasses {
     display: flex;
     background-color: #f5faff;
     text-align: center;
-    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     padding: 40px;
     border-radius: 50px;
+    gap: 30px;
 }
 .ourPass {
     max-width: 200px;
     flex: 0 1 auto;
+    margin: 0 auto;
 }
 .ourPrograms {
-    cursor: pointer;
     margin-top: 40px;
     margin-bottom: 40px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
 .ourPrograms button {
     text-align: center;
     width: calc(48% - 30px);
+    min-width: 362px;
 }
 .ourPrograms button:last-child {
     background-color: #dee6ee;
@@ -39,38 +42,55 @@
     display: flex;
     justify-content: space-between;
     padding: 40px;
+    gap: 20px;
+    .programDetails {
+        width: 70%;
+        min-width: 560px;
+        flex: 1 1 70%;
+    }
+    .programs {
+        // width: 30%;
+        max-width: 530px;
+        flex: 1 1 30%;
+    }
 }
-.nameCaloriies{
+.nameCaloriies {
     display: flex;
-    gap:1em;
+    flex-wrap: wrap;
+    gap: 1em;
     align-items: center;
 }
 
-.programs {
-    width: 30%;
-}
 .programsInfo {
+    min-width: 330px;
     background-color: #37c245;
     padding: 20px;
     border-radius: 25px;
     color: #f5faff;
-    h2{
+    h2 {
         white-space: nowrap;
     }
 }
 .days {
-    cursor: pointer;
     display: flex;
-    gap: 4.3em;
+    justify-content: space-between;
+    gap: 10px;
     background-color: #f5faff;
     padding: 20px;
     border-radius: 25px;
+    h1 {
+        font-size: clamp(16px, 2vw + 1rem, 32px);
+    }
 }
+
 .shares {
     margin-top: 20px;
+    white-space: nowrap;
+    min-width: 330px;
 }
 .share {
     display: flex;
+    gap: 10px;
 }
 .shareName {
     flex: 44;
@@ -103,6 +123,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
 }
 
 .mealName {
@@ -116,6 +137,43 @@
     flex: 3;
     justify-content: space-between;
 }
-.active{
-    color:#64D370;
+.active {
+    color: #64d370;
+}
+
+@media (max-width: 1788px) {
+    .ourPass {
+        max-width: none;
+        flex: 0 0 30%;
+    }
+}
+@media (max-width: 1200px) {
+    .wrapperPrograms {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (max-width: 901px) {
+    .ourPass {
+        flex: 0 0 45%;
+    }
+    .wrapper {
+        .programDetails {
+            min-width: 435px;
+        }
+    }
+}
+@media (max-width: 569px) {
+    .wrapper {
+        .programDetails {
+            min-width: 385px;
+        }
+    }
+    .days {
+        padding: 10px;
+        justify-content: center;
+    }
+    .productWeight {
+        display: none;
+    }
 }

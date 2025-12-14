@@ -14,18 +14,18 @@ const Footer = () => {
         { name: 'Viber', link: Viber }
     ];
 
-        const categorys = [
-            { name: 'Nutrition programs', link: '/' },
-            { name: 'Products', link: '/categories' },
-            { name: 'Gastro Shop', link: '/' },
-            { name: 'About Us', link: '/aboutus' },
-            { name: 'Blog', link: '/news/page/1' }
-        ];
+    const categorys = [
+        { name: 'Nutrition programs', link: '/' },
+        { name: 'Products', link: '/categories' },
+        { name: 'Gastro Shop', link: '/' },
+        { name: 'About Us', link: '/aboutus' },
+        { name: 'Blog', link: '/news/page/1' }
+    ];
 
     return (
         <footer className={style.wrapper}>
             <div className={style.links}>
-                {categorys.map((category,index)=> {
+                {categorys.map((category, index) => {
                     return (
                         <Link href={category.link} key={index}>
                             {category.name}
@@ -37,14 +37,21 @@ const Footer = () => {
                 <Image alt="logo footer" src={logo} />
             </div>
             <div className={style.сontactSection}>
-                <p>Условия сотрудничиства</p>
-                <p>FAQ</p>
-                <div className={style.contacts}>
-                    {contacts.map(contact => {
-                        return <Image alt={contact.name} src={contact.link} />;
-                    })}
+                <div className={style.info}>
+                    <p>Условия сотрудничиства</p>
+                    <p>FAQ</p>
                 </div>
-                <p>+380 (685) 33-35-29</p>
+
+                <div className={style.contacts}>
+                    <div className={style.contactsMedia}>
+                        {contacts.map(contact => {
+                            return (
+                                <Image alt={contact.name} src={contact.link} />
+                            );
+                        })}
+                    </div>
+                    <p>+380 (685) 33-35-29</p>
+                </div>
             </div>
         </footer>
     );
